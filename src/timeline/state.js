@@ -15,15 +15,15 @@ const INITIAL_STATE = { timelines: [], nextPage: 0 };
 const reducer = createReducer(INITIAL_STATE, {
   [ADD]: (state, action) => state.timelines.push(action.timeline),
   [REMOVE]: (state, action) =>
-    (state.timeline = state.timelines.filter(
-      (timeline) => timeline.id !== action.fiend.id
+    (state.timelines = state.timelines.filter(
+      (timeline) => timeline.id !== action.timeline.id
     )),
   [EDIT]: (state, action) => {
-    const index = state.timeline.findIndex(
+    const index = state.timelines.findIndex(
       (timeline) => timeline.id === action.timeline.id
     );
     if (index >= 0) {
-      state.timeline[index] = action.timeline;
+      state.timelines[index] = action.timeline;
     }
   },
   [INCREASE_NEXT_PAGE]: (state, action) => (state.nextPage += 1),

@@ -1,4 +1,4 @@
-import produce from "immer";
+import { produce } from "immer";
 
 const createReducer = (initialState, handlerMap) => {
   return (state = initialState, action) => {

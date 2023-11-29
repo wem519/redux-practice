@@ -13,7 +13,7 @@ const INITIAL_STATE = { friends: [] };
 const reducer = createReducer(INITIAL_STATE, {
   [ADD]: (state, action) => state.friends.push(action.friend),
   [REMOVE]: (state, action) =>
-    (state.friends = state.friends.filter((friend) => friend.id !== action.fiend.id)),
+    (state.friends = state.friends.filter((friend) => friend.id !== action.friend.id)),
   [EDIT]: (state, action) => {
     const index = state.friends.findIndex((friend) => friend.id === action.friend.id);
     if (index >= 0) {
