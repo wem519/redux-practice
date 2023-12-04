@@ -19,8 +19,6 @@ const reducer = createReducer(INITIAL_STATE, {
 });
 
 const reducers = [reducer, timelineReducer];
-console.log(reducer);
-console.log(timelineReducer);
 
 export default mergeReducers(reducers);
 // export default combineReducers({
