@@ -1,30 +1,18 @@
-import React, { useEffect, useReducer } from "react";
-import store from "../../common/store";
+import React from "react";
 import TimeLineList from "../component/TimelineList";
 import { addTimeline } from "../state";
 import { getNextTimeLine } from "../../common/mockData";
+import { useDispatch, useSelector } from "react-redux";
 
 const TimelineMain = () => {
-  const [, forceUpdate] = useReducer((v) => v + 1, 0);
-
-  useEffect(() => {
-    let prevTimelines = store.getState().timeline.timelines;
-    const unsubscribe = store.subscribe(() => {
-      let timelines = store.getState().timeline.timelines;
-      if (prevTimelines !== timelines) {
-        forceUpdate();
-      }
-      prevTimelines = timelines;
-    });
-    return () => unsubscribe();
-  }, []);
+  const timelines = useSelector((state) => state.timeline.timelines);
+  const dispatch = useDispatch();
 
   const onAdd = () => {
     const timeline = getNextTimeLine();
-    store.dispatch(addTimeline(timeline));
+    dispatch(addTimeline(timeline));
   };
   console.log("TimelineMain render");
-  const timelines = store.getState().timeline.timelines;
 
   return (
     <div>
