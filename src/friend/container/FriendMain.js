@@ -7,6 +7,9 @@ import { getNextFriend } from "../../common/mockData";
 const FriendMain = () => {
   const [, forceUpdate] = useReducer((v) => v + 1, 0);
 
+  /**
+   * forceUpdate는 컴포넌트를 재렌더링하기 위해 사용. store에 직접적 변화 X
+   */
   useEffect(() => {
     let prevFriends = store.getState().friend.friends;
     const unsubscribe = store.subscribe(() => {
